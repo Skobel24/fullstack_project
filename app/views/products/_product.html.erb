@@ -1,0 +1,12 @@
+<div class="product">
+  <p>
+    <% if display_product_link %>
+      <%= link_to product.product_name, product_path(product) %>
+      <%= product.product_cost %>
+    <% else %>
+      <%= product.product_name %> --- <%= product.product_cost %> <Br />
+      <%= product.product_description %>
+
+    <% end %>
+  </p>
+</div>
