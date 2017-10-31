@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030004201) do
+ActiveRecord::Schema.define(version: 20171031003654) do
 
-  create_table "customers", force: :cascade do |t|
+  create_table "Customers", force: :cascade do |t|
     t.string "customer_name"
     t.string "customer_address"
     t.string "customer_country"
@@ -20,10 +20,28 @@ ActiveRecord::Schema.define(version: 20171030004201) do
     t.boolean "is_vip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "province_id"
+    t.index ["province_id"], name: "index_customers_on_province_id_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity_ordered"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order_id"
+    t.integer "product_id"
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.string "status_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,6 +51,10 @@ ActiveRecord::Schema.define(version: 20171030004201) do
     t.boolean "rushed_delivery"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.integer "order_status_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -41,6 +63,16 @@ ActiveRecord::Schema.define(version: 20171030004201) do
     t.string "secret_description"
     t.integer "stock_quantity"
     t.decimal "product_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.boolean "is_sale_item"
+    t.decimal "sale_price"
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "abbreviation"
+    t.string "province_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
