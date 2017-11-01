@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Product.create(product_name: "Product One",
-#                product_description: "Product One Description",
+# Product.create(product_name: "Laser Watch",
+#                product_description: "Watch that shoots lasers",
 #                stock_quantity: 99,
-#                product_cost: 2.99)
+#                product_cost: 2.99,
+#                category_id: 4)
 #
 # Product.create(product_name: "Product Two",
 #               product_description: "Product Two Description",
@@ -31,4 +32,11 @@
 #                stock_quantity: 99,
 #                product_cost: 12.99)
 
-Category.create(category_name: 'Horror')
+# Product.create(product_name: "Shoe Phone",
+#                product_description: "A pair of shoes, that doubles as a phone",
+#                stock_quantity: 99,
+#                product_cost: 12.99)
+
+# Category.create(category_name: "Weapon")
+# Category.create(category_name: "Gadget")
+# Category.create(category_name: "Accessory")
