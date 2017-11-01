@@ -3,16 +3,18 @@
 <%= form_tag(products_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
     <%= collection_select(:product, :category_id, @categories, :id,
-                          :category_name, :include_blank => 'All Categories') %>
+                          :category_name,
+                          :include_blank => 'All Categories') %>
     <%= submit_tag "Search", :name => nil %>
 <% end %>
 
-<%=@number%>
+
 
 <% if @products.blank? %>
-  <h4>There are no products containing the term <%= params[:search] %>
-     Category <%=params[:category_id]%>.</h4>
+  <h4>There are no products containing the term <%= params[:search] %></h4>
 <% end %>
+
+
 
 <%= render partial: 'product',
            collection: @products,

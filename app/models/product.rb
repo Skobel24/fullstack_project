@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   end
 
   def self.search_category_id(category_id)
-    where("category_id = ?", "%#{category_id}")
+    where("category_id = ?", "#{category_id}")
   end
 
 end
