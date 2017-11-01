@@ -3,6 +3,7 @@
 <%= form_tag(products_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
     <%= submit_tag "Search", :name => nil %>
+    <%= collection_select(:product, :category_id, @categories, :id, :category_name) %>
 <% end %>
 
 <% if @products.blank? %>

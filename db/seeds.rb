@@ -30,3 +30,5 @@
 #                product_description: "A beautiful pen",
 #                stock_quantity: 99,
 #                product_cost: 12.99)
+
+Category.create(category_name: 'Horror')
