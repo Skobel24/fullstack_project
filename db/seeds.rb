@@ -40,3 +40,4 @@
 # Category.create(category_name: "Weapon")
 # Category.create(category_name: "Gadget")
 # Category.create(category_name: "Accessory")
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
