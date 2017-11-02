@@ -6,13 +6,24 @@ class Product < ApplicationRecord
   #           :stock_quantity, :product_cost, :category_id,
   #           :is_sale_item, :sale_price, presence:true
 
-  def self.search(search)
+  def self.search_category_name(search)
     where("product_name LIKE ? OR product_description LIKE ?",
           "%#{search}%", "%#{search}%")
   end
 
   def self.search_category_id(category_id)
     where("category_id = ?", "#{category_id}")
+  end
+
+  def self.search_category_name_id(search, category_id)
+
+    if category_id == nil
+      where("product_name LIKE ? OR product_description LIKE ?",
+            "%#{search}%", "%#{search}%")
+    else
+      where('(product_name LIKE ? OR product_description LIKE ?) AND category_id = ?',
+        "%#{search}%", "%#{search}%", "#{category_id}")
+    end
   end
 
 end

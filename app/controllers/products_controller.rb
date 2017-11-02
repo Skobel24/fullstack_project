@@ -2,33 +2,29 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @categories = Category.all
-    #@debug = "initial view";
+    #boolean is_loaded just checks to see if the end of the index has occured.
+    #if so, it toggles to true, and allows that category_id param to be detected.
+    #it's an ugly fix.
+    is_loaded = false;
 
-    # if params[:search] and params[:product][:category_id]
-    #
-    # elsif params[:search]
-    #
-    # elsif params[:product][:category_id]
-    #
-    # end
+    if (params[:search] and params[:product][:category_id] != "")
 
-    if params[:search]
-      @products = Product.search(params[:search]).order("created_at DESC")
-    else
-      @products = Product.all.order("created_at DESC")
+      @products = Product.search_category_name_id(params[:search],
+                          params[:product][:category_id])
+                          .order("created_at DESC")
+
+    elsif (is_loaded == true and params[:product][:category_id])
+
+        @products = Product.search_category_id(params[:product][:category_id])
+                           .order("created_at DESC")
+    elsif params[:search]
+
+      @products = Product.search_category_name(params[:search])
+                         .order("created_at DESC")
+
     end
 
-    if params[:product]
-      if params[:product][:category_id]
-        #is_a? Numeric
-        #@debug = "Category ID Detected"
-        @products = Product.search_category_id(params[:product][:category_id]).order("created_at DESC")
-      else
-        #@debug = "Entered product param, but no category found"
-      end
-    else
-      #@debug = "Did not enter product param"
-    end
+    is_loaded = true
   end
 
   def show
