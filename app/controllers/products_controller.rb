@@ -36,8 +36,4 @@ class ProductsController < ApplicationController
     @products = Product.first
   end
 
-  def name
-    return product_name
-  end
-
 end
