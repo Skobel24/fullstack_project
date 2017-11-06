@@ -8,13 +8,4 @@
     <%= submit_tag "Search", :name => nil %>
 <% end %>
 
-<!--<%= link_to "View Sale Items", sale_products_path %>-->
-
-
-<!-- <% if @products.blank? %>
-  <h4>There are no products containing the term <%= params[:search] %></h4>
-<% end %> -->
-
-<%= render partial: 'product',
-           collection: @products,
-           locals: { display_product_link: true } %>
+<!-- <%= link_to "View Sale Items", sale_products_path %> -->
