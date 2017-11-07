@@ -26,4 +26,12 @@ class Product < ApplicationRecord
     end
   end
 
+  def self.search_sale_items()
+    where ("is_sale_item = ?"), true
+  end
+
+  def self.search_new_items
+    where "created_at >= ?", 5.days.ago
+  end
+
 end

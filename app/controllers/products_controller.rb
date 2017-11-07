@@ -33,7 +33,12 @@ class ProductsController < ApplicationController
 
   def sale_products
     @categories = Category.all
-    @products = Product.first
+    @products = Product.search_sale_items.order("created_at DESC")
+  end
+
+  def new_products
+    @categories = Category.all
+    @products = Product.search_new_items.order("created_at DESC")
   end
 
 end

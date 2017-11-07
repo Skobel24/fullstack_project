@@ -1,12 +1,16 @@
 <div class="product">
   <p>
     <% if display_product_link %>
-      <%= link_to product.product_name, product_path(product) %>
-      <%= product.product_cost %>
+      <% if product.is_sale_item %>
+        <%= link_to product.product_name, product_path(product) %>
+        <strike><%= product.product_cost %></strike> <%= product.sale_price %>
+      <% else %>
+        <%= link_to product.product_name, product_path(product) %>
+        <%= product.product_cost %>
+      <% end %>
     <% else %>
-      <%= product.product_name %> --- <%= product.product_cost %> <Br />
-      <%= product.product_description %>
-
+      <%= link_to product.product_name, product_path(product) %>
+      <strike><%= product.product_cost %></strike> <%= product.sale_price %>
     <% end %>
   </p>
 </div>

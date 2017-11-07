@@ -1,4 +1,4 @@
-<h3>Sale Products</h3>
+<h3>New Products</h3>
 
 <%= form_tag(products_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
@@ -10,7 +10,6 @@
 
 <%= link_to "View Sale Items", sale_products_path %>
 <%= link_to "View New Items", new_products_path %>
-
 
 <%= render partial: 'product',
            collection: @products,
