@@ -1,16 +1,26 @@
+
 <div class="product">
   <p>
-    <% if display_product_link %>
-      <% if product.is_sale_item %>
-        <%= link_to product.product_name, product_path(product) %>
-        <strike><%= product.product_cost %></strike> <%= product.sale_price %>
-      <% else %>
-        <%= link_to product.product_name, product_path(product) %>
-        <%= product.product_cost %>
-      <% end %>
-    <% else %>
-      <%= link_to product.product_name, product_path(product) %>
-      <strike><%= product.product_cost %></strike> <%= product.sale_price %>
-    <% end %>
+<% if display_product_link %>
+  <% if product.is_sale_item %>
+    <h3><%= link_to product.product_name, product_path(product) %></h5>
+    <%= product.product_description %><br />
+    <strike><%= product.product_cost %></strike> <%= product.sale_price %>
+  <% else %>
+    <h3><%= link_to product.product_name, product_path(product) %></h3>
+    <%= product.product_description %><br />
+    <%= product.product_cost %>
+  <% end %>
+<% else %>
+  <% if product.is_sale_item %>
+    <h3><%= product.product_name%></h3>
+    <%= product.product_description %><br />
+    <strike><%= product.product_cost %></strike> <%= product.sale_price %>
+  <% else %>
+    <h3><%= product.product_name%></h3>
+    <%= product.product_description %><br />
+    <%= product.product_cost %>
+  <% end %>
+<% end %>
   </p>
 </div>
