@@ -1,7 +1,16 @@
 <h3>About Us</h3>
 <p>
-  Kingsman Apparel & Accessories is a business dedicated to high quality
-  hand crafted clothing and accessories for the everyday gentleman. We take
-  pride in every product, and we assure you only the highest of standards are
-  applied. 
+  <%= @page_info.about_us %>
+</p>
+
+<h3>Contact Us</h3>
+<p>
+  <%= @page_info.contact_us %><br />
+  <ul>
+    <li><%= @page_info.contact_address %></li><br />
+    <li><%= @page_info.contact_phone %></li><br />
+    <li><%= @page_info.contact_email %></li><br />
+    <li>Open <%= @page_info.hours %></li><br />
+  </ul>
+
 </p>
