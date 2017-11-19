@@ -14,3 +14,4 @@
 <%= render partial: 'product',
            collection: @products,
            locals: { display_product_link: true } %>
+           <%= paginate @products %>

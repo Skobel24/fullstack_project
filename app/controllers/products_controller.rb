@@ -10,15 +10,15 @@ class ProductsController < ApplicationController
     if (params[:search] and params[:product][:category_id] != "")
       @products = Product.search_category_name_id(params[:search],
                           params[:product][:category_id])
-                          .order("created_at DESC")
+                          .order("created_at DESC").page(params[:page]).per(5)
     elsif (is_loaded == true and params[:product][:category_id])
         @products = Product.search_category_id(params[:product][:category_id])
-                           .order("created_at DESC")
+                           .order("created_at DESC").page(params[:page]).per(5)
     elsif params[:search]
       @products = Product.search_category_name(params[:search])
-                         .order("created_at DESC")
+                         .order("created_at DESC").page(params[:page]).per(5)
     else
-      @products = Product.all.order("created_at DESC")
+      @products = Product.all.order("created_at DESC").page(params[:page]).per(5)
     end
 
     #Sets the boolean to true so the search can be done.
@@ -33,12 +33,12 @@ class ProductsController < ApplicationController
 
   def sale_products
     @categories = Category.all
-    @products = Product.search_sale_items.order("created_at DESC")
+    @products = Product.search_sale_items.order("created_at DESC").page(params[:page]).per(5)
   end
 
   def new_products
     @categories = Category.all
-    @products = Product.search_new_items.order("created_at DESC")
+    @products = Product.search_new_items.order("created_at DESC").page(params[:page]).per(5)
   end
 
 end
