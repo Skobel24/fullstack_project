@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 gem 'kaminari'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'jquery-rails'
