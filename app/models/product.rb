@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  require 'carrierwave/orm/activerecord'
+  mount_uploader :imagepath, ImagepathUploader
   belongs_to :category
   has_many :line_items
   has_many :orders, :through => :line_items
